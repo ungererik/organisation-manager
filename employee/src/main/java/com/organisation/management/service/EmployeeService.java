@@ -38,6 +38,13 @@ public class EmployeeService {
                         emp.getEmail(), emp.getSalary(), emp.getCompany().getId()))
                 .toList();
     }
+
+    public void deleteEmployee(Long id) {
+        if (!employeeRepository.existsById(id)) {
+            throw new RuntimeException("Employee with this ID doesen't exist: " + id);
+        }
+        employeeRepository.deleteById(id);
+    }
 }
 
 

@@ -39,4 +39,11 @@ public class CompanyService {
         companyRepository.save(company);
 
     }
+
+    public void deleteCompany(Long id) {
+        if (!companyRepository.existsById(id)) {
+            throw new RuntimeException("Company with this ID doesen't exist: " + id);
+        }
+        companyRepository.deleteById(id);
+    }
 }

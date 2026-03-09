@@ -13,7 +13,7 @@ public class EmployeeDto {
     private Long id;
     private String name;
     private String email;
-    private double salary;
+    private Double salary;
     private Long companyId;
 
 

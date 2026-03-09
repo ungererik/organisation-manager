@@ -21,7 +21,7 @@ public class CreateEmployeeRequest {
     private String email;
 
     @Positive(message = "A salary must be a positive number!")
-    @NotBlank(message = "The salary field cannot be empty!")
+    @NotNull(message = "The salary field cannot be empty!")
     private Double salary;
 
     @NotNull(message = "The company ID field cannot be empty!")

@@ -39,4 +39,10 @@ public class CompanyController {
         companyService.updateCompany(id, request);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteCompany(@PathVariable Long id) {
+        companyService.deleteCompany(id);
+        return ResponseEntity.noContent().build();
+    }
 }
