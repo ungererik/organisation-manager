@@ -36,4 +36,10 @@ public class EmployeeController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("update-salary/{id}")
+    public ResponseEntity<Void> updateSalary(@PathVariable Long id, @RequestBody Double newSalary) {
+        employeeService.updateEmployeeSalary(id,newSalary);
+        return ResponseEntity.ok().build();
+    }
+
 }

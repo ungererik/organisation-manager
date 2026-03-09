@@ -6,6 +6,7 @@ import com.organisation.management.entity.CompanyEntity;
 import com.organisation.management.entity.EmployeeEntity;
 import com.organisation.management.repository.CompanyRepository;
 import com.organisation.management.repository.EmployeeRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,16 @@ public class EmployeeService {
         }
         employeeRepository.deleteById(id);
     }
+
+    @Transactional
+    public void updateEmployeeSalary(Long id, Double newSalary) {
+        EmployeeEntity employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Can't find employee with this ID: " +id));
+                employee.setSalary(newSalary);
+                employeeRepository.save(employee);
+    }
+
+
 }
 
 

@@ -6,6 +6,7 @@ import com.organisation.management.dto.UpdateCompanyRequest;
 import com.organisation.management.entity.CompanyEntity;
 import com.organisation.management.mapper.CompanyMapper;
 import com.organisation.management.repository.CompanyRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,7 @@ public class CompanyService {
                 .toList();
     }
 
+    @Transactional
     public void updateCompany(Long id, UpdateCompanyRequest request) {
         CompanyEntity company = companyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cég nem található ezzel az ID-val: " + id));
