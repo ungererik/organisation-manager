@@ -3,6 +3,7 @@ package com.organisation.management.controller;
 import com.organisation.management.dto.CreateEmployeeRequest;
 import com.organisation.management.dto.EmployeeDto;
 import com.organisation.management.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createEmployee(@RequestBody CreateEmployeeRequest request){
+    public ResponseEntity<Void> createEmployee(@Valid @RequestBody CreateEmployeeRequest request){
         employeeService.createEmployee(request);
         return ResponseEntity.ok().build();
     }

@@ -6,20 +6,17 @@ import com.organisation.management.entity.CompanyEntity;
 import com.organisation.management.entity.EmployeeEntity;
 import com.organisation.management.repository.CompanyRepository;
 import com.organisation.management.repository.EmployeeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final CompanyRepository companyRepository;
-
-    public EmployeeService(EmployeeRepository employeeRepository, CompanyRepository companyRepository) {
-        this.employeeRepository = employeeRepository;
-        this.companyRepository = companyRepository;
-    }
 
     public void createEmployee(CreateEmployeeRequest request) {
         CompanyEntity companyEntity = companyRepository.findById(request.getCompanyId())

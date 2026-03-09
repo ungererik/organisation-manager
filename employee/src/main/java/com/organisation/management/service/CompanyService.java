@@ -6,21 +6,17 @@ import com.organisation.management.dto.UpdateCompanyRequest;
 import com.organisation.management.entity.CompanyEntity;
 import com.organisation.management.mapper.CompanyMapper;
 import com.organisation.management.repository.CompanyRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CompanyService {
 
     private final CompanyRepository companyRepository;
     private final CompanyMapper companyMapper;
-
-    public CompanyService(CompanyRepository companyRepository,
-                          CompanyMapper companyMapper) {
-        this.companyRepository = companyRepository;
-        this.companyMapper = companyMapper;
-    }
 
     public void createCompany(CreateCompanyRequest request) {
         CompanyEntity entity = companyMapper.mapToEntity(request);

@@ -1,10 +1,14 @@
 package com.organisation.management.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Builder
 public class CompanyDto {
 
     private String name;
