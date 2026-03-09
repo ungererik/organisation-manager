@@ -25,6 +25,8 @@ public class EmployeeController {
 
     @GetMapping("/list/{companyId}")
     public ResponseEntity<List<EmployeeDto>> findEmployeesByCompany(@PathVariable Long companyId){
+        List<EmployeeDto> employees = employeeService.getEmployeesByCompany(companyId);
+        return ResponseEntity.ok(employees);
 
     }
 

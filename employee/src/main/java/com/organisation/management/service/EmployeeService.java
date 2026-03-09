@@ -1,11 +1,14 @@
 package com.organisation.management.service;
 
 import com.organisation.management.dto.CreateEmployeeRequest;
+import com.organisation.management.dto.EmployeeDto;
 import com.organisation.management.entity.CompanyEntity;
 import com.organisation.management.entity.EmployeeEntity;
 import com.organisation.management.repository.CompanyRepository;
 import com.organisation.management.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EmployeeService {
@@ -30,4 +33,14 @@ public class EmployeeService {
 
         employeeRepository.save(employeeEntity);
     }
+
+    public List<EmployeeDto> getEmployeesByCompany(Long companyId) {
+        return employeeRepository.findAllByCompany_Id(companyId)
+                .stream()
+                .map(emp -> new EmployeeDto(emp.getId(), emp.getName(),
+                        emp.getEmail(), emp.getSalary(), emp.getCompany().getId()))
+                .toList();
+    }
 }
+
+
